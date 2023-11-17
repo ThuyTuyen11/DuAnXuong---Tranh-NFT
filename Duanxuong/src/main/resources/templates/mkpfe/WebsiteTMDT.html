@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <style>
+
+
+    .table-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
+    table {
+      width: 400px;
+      margin-right: 20px;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      border: none;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    
+    
+    td img {
+      object-fit: cover;
+      max-width: 20%;
+      height: auto;
+    }
+    
+    td .product-name {
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" >
+            <img class="img-logo" src="/img/Artistic Visions Gallery.png" alt="">
+            Opensea
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Drops</a>
+               
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Stats</a>
+               
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Create</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">
+                <i class="bi bi-search-heart"></i>
+              </button>
+            </form>
+           <div >
+            <a class="a-icon-login" href=""><i class="bi bi-wallet"></i>    ETH | WETH</i></a>
+            <a class="a-icon" href=""><i class="bi bi-person-circle"></i></a>
+            <a class="a-icon" href=""><i class="bi bi-shop-window"></i></a>
+           </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </div>
+  <hr>
+  <main>
+    <div class="container">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="img/NFTDehya.jpg" class="d-block w-100  " alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/img/NFTVenti.jpg" class="d-block w-100 " alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/img/NFTTartaglia.jpg" class="d-block w-100  " alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+    <hr>
+      <div>
+        <button id="button1" class="button" onclick="toggleButton(1)">top</button>
+      <button id="button2" class="button" onclick="toggleButton(2)">trending</button>
+      <script>
+        function toggleButton(buttonId) {
+          var button1 = document.getElementById("button1");
+          var button2 = document.getElementById("button2");
+          
+          if (buttonId === 1) {
+            button1.classList.add("active");
+            button2.classList.remove("active");
+          } else if (buttonId === 2) {
+            button2.classList.add("active");
+            button1.classList.remove("active");
+          }
+        }
+      </script>
+      </div>
+      <div>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Artist</th>
+              <th>Avatar</th>
+            </tr>
+            <tr th:each="infomation, stat : ${artists}">
+              <td><a th:attr="href=@{/mkpfe/WebsiteTMDT/(pusername=${infomation.account.username})}" th:text="${infomation.account.username}"></a></td>
+              <td><img src="/img/image 6.jpg" alt="Sản phẩm 1"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div><h4 >Top Collector Buys Today in Art</h4></div>
+      <br>
+      <div id="featured-products" >
+        <div class="featured-product" th:each="product, stat : ${products}">
+          <img th:src="@{|/img/${product.image}|}">
+          <h2 th:text="${product.name}"></h2>
+          <div class="price" th:text="${product.price}"></div>
+        </div>
+      </div>
+    </main>
+  <hr>
+</body>
+<footer>
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-3">
+        <a href="#">
+          <img class="img-footer" src="img/Artistic Visions Gallery.png" alt="#"> <br>
+        </a>
+        Opensea <br>
+        The world’s first and largest digital marketplace for crypto collectibles and non-fungible tokens (NFTs). Buy, sell, and discover exclusive digital items.
+      </div>
+      <div class="col-2">
+       <Strong> Marketplace</Strong> <br>
+        <a class="a-footer" href="">Art</a> <br>
+        <a class="a-footer" href="">Gaming</a> <br>
+        <a class="a-footer" href="">Memberships</a> <br>
+        <a class="a-footer" href="">PFPs</a> <br>
+        <a class="a-footer" href="">Photography</a> <br>
+        <a class="a-footer" href="">Music</a> <br>
+      </div>
+      <div class="col-2">
+        <Strong>My Account</Strong> <br>
+        <a class="a-footer" href="">Profile</a> <br>
+        <a class="a-footer" href="">Favorites</a> <br>
+        <a class="a-footer" href="">Watchlist</a> <br>
+        <a class="a-footer" href="">Studio</a> <br>
+        <a class="a-footer" href="">OpenSea Pro</a> <br>
+        <a class="a-footer" href="">Settings</a> <br>
+      </div>
+      <div class="col-2">
+        <Strong> Resources</Strong> <br>
+        <a class="a-footer" href="">Blog</a> <br>
+        <a class="a-footer" href="">Learn</a> <br>
+        <a class="a-footer" href="">Help center</a> <br>
+        <a class="a-footer" href="">Community standards</a> <br>
+        <a class="a-footer" href="">Taxes</a> <br>
+        <a class="a-footer" href="">Partners</a> <br>
+        <a class="a-footer" href="">Developer platform</a> <br>
+        <a class="a-footer" href="">Platform status</a> <br>  <br> 
+
+        <Strong> Stats</Strong> <br>
+        <a class="a-footer" href="">Rankings</a> <br>
+        <a class="a-footer" href="">Activity</a> <br>
+
+      </div> 
+      <div class="col-3">
+        <Strong> Company</Strong> <br>
+        <a class="a-footer" href="">About</a> <br>
+        <a class="a-footer" href="">Careers</a> <br>
+        <a class="a-footer" href="">Ventures</a> <br>
+
+        
+        <Strong> Learn</Strong> <br> 
+        <a class="a-footer" href="">What is an NFT?</a> <br>
+        <a class="a-footer" href="">How to buy an NFT</a> <br>
+        <a class="a-footer" href="">What are NFT drops?</a> <br>
+        <a class="a-footer" href="">How to sell an NFT using OpenSea</a> <br>
+        <a class="a-footer" href="">How to create an NFT on OpenSea</a> <br>
+        <a class="a-footer" href="">What is a crypto wallet?</a> <br>
+        <a class="a-footer" href="">What is cryptocurrency?</a> <br>
+        <a class="a-footer" href="">What are blockchain gas fees?</a> <br>
+        <a class="a-footer" href="">What is a blockchain?</a> <br>
+        <a class="a-footer" href="">What is web3?</a> <br>
+        <a class="a-footer" href="">How to stay protected in web3</a> <br>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>
